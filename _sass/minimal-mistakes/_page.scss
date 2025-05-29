@@ -33,6 +33,14 @@ body {
   flex: 1 0 auto;
 }
 
+.highlight-box {
+  font-style: italic;
+  background-color: lightgray;
+  padding: 10px;
+  font-size: 80% !important;
+  margin: 0 30px 0 30px !important;
+}
+
 .page {
   @include breakpoint($large) {
     float: inline-end;
@@ -124,13 +132,6 @@ body {
       }
     }
   }
-
-  // p:first-child {
-  //   font-style: italic;
-  //   background-color: lightgray;
-  //   padding: 10px;
-  //   font-size: 90%;
-  // }
 
   a:not(.btn) {
     &:hover {

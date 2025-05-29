@@ -48,7 +48,13 @@ layout: default
             </nav>
           </aside>
         {% endif %}
-        {{ content }}
+        {% if page.excerpt %}
+          <p class="highlight-box">{{ page.excerpt | remove: "<p>" | remove: "</p>" }}</p>
+          <hr/>
+          {{ content | remove: page.excerpt }}
+        {% else %}
+          {{ content }}
+        {% endif %}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
