@@ -18,3 +18,17 @@ layout: archive
 </div>
 
 {% include paginator.html %}
+
+{% if site.author.bsky_user %}
+  <div>
+    <h3 class="archive__subtitle">
+      Bluesky Posts <a href="https://bsky.app/profile/{{ site.author.bsky_user }}" target="_blank"><i class="fab fa-fw fa-bluesky" aria-hidden="true"></i></a>
+    </h3>
+    <bsky-embed
+      username="{{ site.author.bsky_user }}"
+      limit="3"  
+    >
+      <p>Loading Bluesky posts...</p>
+    </bsky-embed>
+  </div>
+{% endif %}
