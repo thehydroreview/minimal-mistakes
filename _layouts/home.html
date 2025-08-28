@@ -7,9 +7,9 @@ layout: archive
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
 
 {% if paginator %}
-  {% assign posts = paginator.posts %}
+  {% assign posts = paginator.posts | where: "categories","blogs" %}
 {% else %}
-  {% assign posts = site.posts %}
+  {% assign posts = site.posts | where: "categories","blogs" %}
 {% endif %}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
@@ -17,18 +17,4 @@ layout: archive
   {% include documents-collection.html entries=posts type=entries_layout %}
 </div>
 
-{% include paginator.html %}
-
-{% if site.author.bsky_user %}
-  <div>
-    <h3 class="archive__subtitle">
-      Bluesky Posts <a href="https://bsky.app/profile/{{ site.author.bsky_user }}" target="_blank"><i class="fab fa-fw fa-bluesky" aria-hidden="true"></i></a>
-    </h3>
-    <bsky-embed
-      username="{{ site.author.bsky_user }}"
-      limit="3"  
-    >
-      <p>Loading Bluesky posts...</p>
-    </bsky-embed>
-  </div>
-{% endif %}
+<!-- {% include paginator.html %} -->
