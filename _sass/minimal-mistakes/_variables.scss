@@ -106,7 +106,8 @@ $border-color: $lighter-gray !default;
 $form-background-color: $lighter-gray !default;
 $footer-background-color: $lighter-gray !default;
 
-$primary-color: #fe5c00 !default;
+// $primary-color: #fe5c00 !default;
+$primary-color: mix(#600b63, $text-color, 80%) !default;
 $success-color: #3fa63f !default;
 $warning-color: #d67f05 !default;
 $danger-color: #ee5f5b !default;
@@ -149,10 +150,12 @@ $youtube-color: #bb0000 !default;
 $xing-color: #006567 !default;
 
 /* links */
-$link-color: mix(#Fe5c00, $text-color, 80%) !default;
+// $link-color: mix(#Fe5c00, $text-color, 80%) !default;
+$link-color: mix(#600b63, $text-color, 80%) !default;
 $link-color-hover: mix(#000, $link-color, 25%) !default;
 $link-color-visited: mix(#fff, $link-color, 15%) !default;
-$masthead-link-color: $primary-color !default;
+// $masthead-link-color: $primary-color !default;
+$masthead-link-color: mix(#600b63, $text-color, 80%) !default;
 $masthead-link-color-hover: mix(#000, $primary-color, 25%) !default;
 $navicon-link-color-hover: mix(#fff, $primary-color, 75%) !default;
 
