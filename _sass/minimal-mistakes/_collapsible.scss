@@ -1,5 +1,5 @@
 .wrap-collabsible {
-  margin-bottom: 1.2rem 0;
+  margin-bottom: 0 0;
 }
 
 input[type='checkbox'] {
@@ -11,14 +11,15 @@ input[type='checkbox'] {
 
   font-weight: bold;
   font-family: monospace;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  text-align: center;
+  font-size: 1.0rem;
+  // text-transform: uppercase;
+  text-align: left;
 
-  padding: 1rem;
+  padding: 0 10;
+  margin: 0 10;
 
   color: $link-color;
-  background: $light-gray;
+  // background: $light-gray;
 
   cursor: pointer;
 

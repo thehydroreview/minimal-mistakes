@@ -48,16 +48,52 @@ layout: default
             </nav>
           </aside>
         {% endif %}
-        {% if page.excerpt %}
-          <p class="highlight-box">{{ page.excerpt | remove: "<p>" | remove: "</p>" }}</p>
-          <hr/>
-          {{ content | remove: page.excerpt }}
-        {% else %}
           {{ content }}
-        {% endif %}
+            <hr/>
+          {% if page.issue.pdf %}
+          <h3>Full Issue</h3>
+          <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank">{{ page.issue.date }}</a></p>
+          {% endif %}
+          {% if page.issue.pages != null %}
+          <h3>Pages</h3>
+            {% for apage in page.issue.pages %}
+              {% if forloop.first == true %}
+            <div class="issue-image-row">
+              {% else %}
+                {% assign remainder = forloop.index | modulo: 4 %}
+                {% if remainder == 1 %}
+            </div>
+            <div class="issue-image-row">
+                {% endif %}
+              {% endif %}
+                <div class="issue-image-column">
+                  <div class="issue-image-card">
+                    <a href="{{ apage.small }}"><img src="{{ apage.thumb }}" style="width: 100%;"></a>
+                    <p>Page {{ forloop.index }}<br/><a href="{{ apage.large }}" target="_blank">Full Size</a></p>
+                  </div>
+                </div>
+            {% endfor %}            
+            </div>
+          <h3>Search Text</h3>
+          {% for apage in page.issue.pages %}
+            <div class="wrap-collabsible">
+            <input id="collapsible-page-{{ forloop.index }}" class="toggle" type="checkbox">
+            <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">Page {{ forloop.index }}</label>
+            <div class="collapsible-content">
+              <div class="content-inner">
+                {% for aline in apage.words %}
+                <p>{{ aline }}</p>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}            
+          {% endif %}
+
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
+      {% include post_pagination_v2.html %}
       <footer class="page__meta">
         {% if site.data.ui-text[site.locale].meta_label %}
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
@@ -67,8 +103,6 @@ layout: default
       </footer>
 
       {% if page.share %}{% include social-share.html %}{% endif %}
-
-      {% include post_pagination_v2.html %}
     </div>
 
     {% if site.comments.provider and page.comments %}
