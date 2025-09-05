@@ -52,7 +52,12 @@ layout: default
             <hr/>
           {% if page.issue.pdf %}
           <h3>Full Issue</h3>
-          <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank">{{ page.issue.date }}</a></p>
+          <div class="issue-image-row">
+            <div class="issue-image-card">
+              <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank"><img src="{{ page.issue.masthead }}" style="width: 100%;"></a></p>
+              <p>{{ page.issue.date }}</p>
+            </div>
+          </div>
           {% endif %}
           {% if page.issue.pages != null %}
           <h3>Pages</h3>
@@ -75,19 +80,20 @@ layout: default
             {% endfor %}            
             </div>
           <h3>Search Text</h3>
-          {% for apage in page.issue.pages %}
             <div class="wrap-collabsible">
             <input id="collapsible-page-{{ forloop.index }}" class="toggle" type="checkbox">
-            <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">Page {{ forloop.index }}</label>
+            <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">All words</label>
             <div class="collapsible-content">
               <div class="content-inner">
+          {% for apage in page.issue.pages %}
+                <h4 id="page-{{ forloop.index}}">Page {{ forloop.index}}</h4>
                 {% for aline in apage.words %}
                 <p>{{ aline }}</p>
                 {% endfor %}
+          {% endfor %}            
               </div>
             </div>
           </div>
-          {% endfor %}            
           {% endif %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
