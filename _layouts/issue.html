@@ -72,7 +72,7 @@ layout: default
                 {% endif %}
               {% endif %}
                 <div class="issue-image-column">
-                  <div class="issue-image-card">
+                  <div id="page-{{ forloop.index }}"class="issue-image-card">
                     <a href="{{ apage.small }}"><img src="{{ apage.thumb }}" style="width: 100%;"></a>
                     <p>Page {{ forloop.index }}<br/><a href="{{ apage.large }}" target="_blank">Full Size</a></p>
                   </div>
@@ -86,10 +86,11 @@ layout: default
             <div class="collapsible-content">
               <div class="content-inner">
           {% for apage in page.issue.pages %}
-                <h4 id="page-{{ forloop.index}}">Page {{ forloop.index}}</h4>
-                {% for aline in apage.words %}
+                <h4 id="words-{{ forloop.index}}">Page {{ forloop.index}}</h4>
+                {% include {{ apage.text }} %}
+                <!-- {% for aline in apage.words %}
                 <p>{{ aline }}</p>
-                {% endfor %}
+                {% endfor %} -->
           {% endfor %}            
               </div>
             </div>
