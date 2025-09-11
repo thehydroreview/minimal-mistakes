@@ -48,7 +48,6 @@ layout: default
             </nav>
           </aside>
         {% endif %}
-          {{ content }}
             <hr/>
           {% if page.issue.pdf %}
           <h3>Full Issue</h3>
@@ -79,25 +78,20 @@ layout: default
                 </div>
             {% endfor %}            
             </div>
-          <h3>Search Text</h3>
-            <div class="wrap-collabsible">
+          
+          {% endif %}
+
+        {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+        <h3>Search Text</h3>
+        <div class="wrap-collabsible">
             <input id="collapsible-page-{{ forloop.index }}" class="toggle" type="checkbox">
             <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">All words</label>
             <div class="collapsible-content">
               <div class="content-inner">
-          {% for apage in page.issue.pages %}
-                <h4 id="words-{{ forloop.index}}">Page {{ forloop.index}}</h4>
-                {% include {{ apage.text }} %}
-                <!-- {% for aline in apage.words %}
-                <p>{{ aline }}</p>
-                {% endfor %} -->
-          {% endfor %}            
+          {{ content | remove: page.excerpt }}
               </div>
             </div>
           </div>
-          {% endif %}
-
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 
       {% include post_pagination_v2.html %}
