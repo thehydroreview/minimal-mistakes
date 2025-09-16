@@ -7,7 +7,11 @@
 <div class="feature__wrapper">
 
   {% for f in feature_row %}
-    <div class="feature__item{% if include.type %}--{{ include.type }}{% endif %}">
+    {% assign bgstyle = "#ffffff" %}
+    {% if f.bgcolor %}
+      {% assign bgstyle = f.bgcolor %}
+    {% endif %}
+    <div style="background-color: {{ bgstyle }};" class="feature__item{% if include.type %}--{{ include.type }}{% endif %}">
       <div class="archive__item">
         {% if f.image_path %}
           <div class="archive__item-teaser">
@@ -31,7 +35,11 @@
           {% endif %}
 
           {% if f.url %}
-            <p><a href="{{ f.url | relative_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
+            {% if f.target %}
+              <p><a href="{{ f.url | relative_url }}" target="{{ f.target }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
+            {% else %}
+              <p><a href="{{ f.url | relative_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
+            {% endif %}
           {% endif %}
         </div>
       </div>

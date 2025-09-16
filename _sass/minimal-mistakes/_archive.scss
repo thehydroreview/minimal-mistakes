@@ -248,10 +248,12 @@
   position: relative;
   margin-bottom: 2em;
   font-size: 1.125em;
+  border-radius: 16px;
+  padding: 8px;
 
   @include breakpoint($small) {
     float: inline-start;
-    margin-bottom: 0;
+    margin-bottom: 1em;
     width: span(4 of 12);
 
     &:nth-child(3n + 1) {
