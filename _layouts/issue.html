@@ -24,8 +24,8 @@ layout: default
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork"{% if page.locale %} lang="{{ page.locale }}"{% endif %}>
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | replace: '|', '&#124;' | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{% endif %}
-    {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
+    <!-- {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{% endif %} -->
+    <!-- {% if page.last_modified_at %}<meta itemprop="dateModified" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %} -->
 
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
@@ -53,40 +53,34 @@ layout: default
           <h3>Full Issue</h3>
           <div class="issue-image-row">
             <div class="issue-image-card">
-              <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank"><img src="{{ page.issue.masthead }}" style="width: 100%;"></a></p>
-              <p>{{ page.issue.date }}</p>
+              <p><img src="{{ page.issue.masthead }}" style="width: 100%;"></p>
+              <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank">{{ page.issue.date | date: "%A, %b %d, %y" }}</a><i class="fa-solid fa-arrow-up-right-from-square"></i></p>
             </div>
           </div>
           {% endif %}
           {% if page.issue.pages != null %}
           <h3>Pages</h3>
+            <div class="issue-image-row">
+              <span class="page-icon-hover-text">Click the image to view in the lightbox. Click the page number to view in a separate tab.</span><br/>
             {% for apage in page.issue.pages %}
-              {% if forloop.first == true %}
-            <div class="issue-image-row">
-              {% else %}
-                {% assign remainder = forloop.index | modulo: 4 %}
-                {% if remainder == 1 %}
-            </div>
-            <div class="issue-image-row">
-                {% endif %}
-              {% endif %}
                 <div class="issue-image-column">
                   <div id="page-{{ forloop.index }}"class="issue-image-card">
                     <a href="{{ apage.image }}"><img src="{{ apage.thumb }}" style="width: 100%;"></a>
-                    <p>Page {{ forloop.index }}&nbsp;<a href="{{ apage.image }}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
+                    <p><a href="{{ apage.image }}" target="_blank">Page {{ forloop.index }}</a><i class="fa-solid fa-arrow-up-right-from-square"></i></p>
                   </div>
                 </div>
             {% endfor %}            
             </div>
-          
           {% endif %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
-        <h3>Search Text</h3>
+        <!-- <h3>Search Text</h3> -->
+         <hr/>
         <div class="wrap-collabsible">
             <input id="collapsible-page-{{ forloop.index }}" class="toggle" type="checkbox">
-            <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">All words</label>
+            <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">Search Text</label>
             <div class="collapsible-content">
+                <p><small><strong>Note:</strong>This text isn't meant to be read. It's here to assist the search engine to make an index of all the words on each page.</small></p>
               <div class="content-inner">
           {{ content | remove: page.excerpt }}
               </div>
@@ -100,7 +94,7 @@ layout: default
           <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
         {% endif %}
         {% include page__taxonomy.html %}
-        {% include page__date.html %}
+        <!-- {% include page__date.html %} -->
       </footer>
 
       {% if page.share %}{% include social-share.html %}{% endif %}

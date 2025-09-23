@@ -8,6 +8,30 @@
 /* Remove extra left and right margins, due to padding */
 .issue-image-row {margin: 0 -5px;}
 
+.issue-image-row .page-icon-hover-text {
+  visibility: hidden;
+  padding: 0.25em 0.5em;
+  background-color: $primary-color;
+  color: #fff;
+  text-align: center;
+  border-radius: 0.25em;
+  font-size: small;
+  white-space: nowrap;
+  
+  /* Position the tooltip */
+  // position: fixed;
+  z-index: 1;
+  top: 100%;
+  left: 100%;
+  transition-property: visibility;
+  transition-delay: 0s;
+}
+
+.issue-image-row:hover .page-icon-hover-text {
+  visibility: visible;
+  transition-delay: 0.3s;
+}
+
 /* Clear floats after the columns */
 .issue-image-row:after {
   content: "";
