@@ -72,8 +72,8 @@ layout: default
               {% endif %}
                 <div class="issue-image-column">
                   <div id="page-{{ forloop.index }}"class="issue-image-card">
-                    <a href="{{ apage.small }}"><img src="{{ apage.thumb }}" style="width: 100%;"></a>
-                    <p>Page {{ forloop.index }}<br/><a href="{{ apage.large }}" target="_blank">Full Size</a></p>
+                    <a href="{{ apage.image }}"><img src="{{ apage.thumb }}" style="width: 100%;"></a>
+                    <p>Page {{ forloop.index }}&nbsp;<a href="{{ apage.image }}" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></p>
                   </div>
                 </div>
             {% endfor %}            
