@@ -61,12 +61,11 @@ layout: default
           {% if page.issue.pages != null %}
           <h3>Pages</h3>
             <div class="issue-image-row">
-              <span class="page-icon-hover-text">Click the image to view in the lightbox. Click the page number to view in a separate tab.</span><br/>
             {% for apage in page.issue.pages %}
                 <div class="issue-image-column">
-                  <div id="page-{{ forloop.index }}"class="issue-image-card">
-                    <a href="{{ apage.image }}"><img src="{{ apage.thumb }}" style="width: 100%;"></a>
-                    <p><a href="{{ apage.image }}" target="_blank">Page {{ forloop.index }}</a><i class="fa-solid fa-arrow-up-right-from-square"></i></p>
+                  <div id="page-{{ forloop.index }}" class="issue-image-card">
+                    <a href="/view-image?yy={{ page.issue.yy }}&mm={{ page.issue.mm }}&dd={{ page.issue.dd }}&page={{ apage.page }}&pagecount={{ page.issue.pagecount }}"><img src="{{ apage.thumb }}"></a>
+                    <p>Page {{ forloop.index }}</p>
                   </div>
                 </div>
             {% endfor %}            
@@ -80,9 +79,9 @@ layout: default
             <input id="collapsible-page-{{ forloop.index }}" class="toggle" type="checkbox">
             <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">Search Text</label>
             <div class="collapsible-content">
-                <p><small><strong>Note:</strong>This text isn't meant to be read. It's here to assist the search engine to make an index of all the words on each page.</small></p>
               <div class="content-inner">
-          {{ content | remove: page.excerpt }}
+                <p><strong>Note:</strong> This text isn't meant to be read. It's here to build index of the searchable words on each page.</p>
+                {{ content | remove: page.excerpt }}
               </div>
             </div>
           </div>
