@@ -17,6 +17,7 @@ layout: default
     {% include breadcrumbs.html %}
   {% endunless %}
 {% endif %}
+    <script type="text/javascript" src="/assets/js/kibo.min.js"></script>
 
 <div id="main" role="main">
   {% include sidebar.html %}
@@ -91,3 +92,8 @@ layout: default
     {% include page__related.html posts=site.posts %}
   {% endif %}
 </div>
+<script type="text/javascript">
+  var k = new Kibo();
+  k.down(['right'], function() { document.getElementById('pagination-next').click() });
+  k.down(['left'],  function() { document.getElementById('pagination-prev').click() });
+</script>
