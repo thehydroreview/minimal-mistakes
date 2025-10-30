@@ -54,7 +54,7 @@ layout: default
           <h3>Full Issue</h3>
           <div class="issue-image-row">
             <div class="issue-image-card">
-              <p><img src="{{ page.issue.masthead }}" style="width: 100%;"></p>
+              <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank"><img src="{{ page.issue.masthead }}" style="width: 100%;"></a></p>
               <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank">{{ page.issue.date | date: "%A, %b %d, %y" }}</a><i class="fa-solid fa-arrow-up-right-from-square"></i></p>
             </div>
           </div>
