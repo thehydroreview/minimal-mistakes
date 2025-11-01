@@ -54,7 +54,7 @@ layout: default
           <h3>Full Issue</h3>
           <div class="issue-image-row">
             <div class="issue-image-card">
-              <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank"><img src="{{ page.issue.masthead }}" style="width: 100%;"></a></p>
+              <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank"><img src="{{ page.issue.masthead }}" style="width: 100%;" alt="Link to full issue PDF. Opens in new tab."></a></p>
               <p><a id="full-issue" class tabindex="-1" href="{{ page.issue.pdf }}" target="_blank">{{ page.issue.date | date: "%A, %b %d, %y" }}</a><i class="fa-solid fa-arrow-up-right-from-square"></i></p>
             </div>
           </div>
@@ -65,7 +65,7 @@ layout: default
             {% for apage in page.issue.pages %}
                 <div class="issue-image-column">
                   <div id="page-{{ forloop.index }}" class="issue-image-card">
-                    <a href="/view-image/?yy={{ page.issue.yy }}&mm={{ page.issue.mm }}&dd={{ page.issue.dd }}&page={{ apage.page }}&pagecount={{ page.issue.pagecount }}"><img src="{{ apage.thumb }}"></a>
+                    <a href="/view-image/?yy={{ page.issue.yy }}&mm={{ page.issue.mm }}&dd={{ page.issue.dd }}&page={{ apage.page }}&pagecount={{ page.issue.pagecount }}"><img src="{{ apage.thumb }}" alt="Link to page {{ forloop.index }}. Image opens in the same tab. Press ESC to return."></a>
                     <p>Page {{ forloop.index }}</p>
                   </div>
                 </div>
