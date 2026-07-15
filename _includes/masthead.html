@@ -5,7 +5,7 @@
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         {% unless logo_path == empty %}
-          <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}"  title="{{ site.data.ui-text[locale].breadcrumb_home_label | default: 'Home' }} alt="{{ site.masthead_title | default: site.title }} id="site-logo-img">"></a>
+          <a class="site-logo" href="{{ '/' | relative_url }}"><img src="{{ logo_path | relative_url }}"  title="{{ site.data.ui-text[locale].breadcrumb_home_label | default: 'Home' }}" alt="{{ site.masthead_title | default: site.title }}" id="site-logo-img"></a>
         {% endunless %}
         <!-- <a class="site-title" href="{{ '/' | relative_url }}">
           {{ site.masthead_title | default: site.title | escape_once | strip }}
