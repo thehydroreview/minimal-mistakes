@@ -14,10 +14,45 @@
   {% if site.enable_copy_code_button -%}
     window.enable_copy_code_button = true;
   {%- endif %}
+    window.addEventListener("load", (event) => {
+      node = document.getElementById('theme_logo');
+      if(sessionStorage.getItem('theme') === "dark")
+      {
+        node = document.getElementById('theme_logo_2');
+      }
+      document.getElementById('site-logo-img').src=node.getAttribute('href');      
+    }
+);
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" id="theme_source">
+<link rel="theme logo" href="{{ site.logo | relative_url }}" id="theme_logo">
+{% if site.minimal_mistakes_skin2 %}
+  <link rel="stylesheet alternate" href="{{ '/assets/css/theme2.css' | relative_url }}" id="theme_source_2">
+  <link rel="theme logo alternate" href="{{ site.logo-alt | relative_url }}" id="theme_logo_2">
+  <script>
+    let theme = sessionStorage.getItem('theme');
+    if(theme === "dark")
+    {
+      sessionStorage.setItem('theme', 'dark');
+      node1 = document.getElementById('theme_source');
+      node2 = document.getElementById('theme_source_2');
+      node3 = document.getElementById('theme_logo');
+      node4 = document.getElementById('theme_logo_2');
+      
+      node1.setAttribute('rel', 'stylesheet alternate'); 
+      node2.setAttribute('rel', 'stylesheet');
+      node3.setAttribute('rel', 'theme logo');
+      node4.setAttribute('rel', 'theme logo alternate');
+    }
+    else
+    {
+      sessionStorage.setItem('theme', 'light');
+    }
+  </script>
+{% endif %}
+
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
