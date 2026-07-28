@@ -16,29 +16,42 @@ var store = [
       {%- endif -%}
       {
         "title": {{ doc.title | jsonify }},
-        "excerpt":
-          {%- if site.search_full_content == true -%}
-            {{ doc.content | newline_to_br |
-              replace:"<br />", " " |
-              replace:"</p>", " " |
-              replace:"</h1>", " " |
-              replace:"</h2>", " " |
-              replace:"</h3>", " " |
-              replace:"</h4>", " " |
-              replace:"</h5>", " " |
-              replace:"</h6>", " "|
-            strip_html | strip_newlines | jsonify }},
+        "excerpt": {%- if doc.search_text -%}
+            {% capture search_text %}{% include {{ doc.search_text }} %}{% endcapture %}
+              {{ search_text | newline_to_br |
+                replace:"<br />", " " |
+                replace:"</p>", " " |
+                replace:"</h1>", " " |
+                replace:"</h2>", " " |
+                replace:"</h3>", " " |
+                replace:"</h4>", " " |
+                replace:"</h5>", " " |
+                replace:"</h6>", " "|
+              strip_html | strip_newlines | jsonify }},
           {%- else -%}
-            {{ doc.content | newline_to_br |
-              replace:"<br />", " " |
-              replace:"</p>", " " |
-              replace:"</h1>", " " |
-              replace:"</h2>", " " |
-              replace:"</h3>", " " |
-              replace:"</h4>", " " |
-              replace:"</h5>", " " |
-              replace:"</h6>", " "|
-            strip_html | strip_newlines | truncatewords: 50 | jsonify }},
+            {%- if site.search_full_content == true -%}
+              {{ doc.content | newline_to_br |
+                replace:"<br />", " " |
+                replace:"</p>", " " |
+                replace:"</h1>", " " |
+                replace:"</h2>", " " |
+                replace:"</h3>", " " |
+                replace:"</h4>", " " |
+                replace:"</h5>", " " |
+                replace:"</h6>", " "|
+              strip_html | strip_newlines | jsonify }},
+            {%- else -%}
+              {{ doc.content | newline_to_br |
+                replace:"<br />", " " |
+                replace:"</p>", " " |
+                replace:"</h1>", " " |
+                replace:"</h2>", " " |
+                replace:"</h3>", " " |
+                replace:"</h4>", " " |
+                replace:"</h5>", " " |
+                replace:"</h6>", " "|
+              strip_html | strip_newlines | truncatewords: 50 | jsonify }},
+            {%- endif -%}
           {%- endif -%}
         "categories": {{ doc.categories | jsonify }},
         "tags": {{ doc.tags | jsonify }},
