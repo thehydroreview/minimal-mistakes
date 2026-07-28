@@ -75,17 +75,6 @@ layout: default
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
         <!-- <h3>Search Text</h3> -->
-         <hr/>
-        <div class="wrap-collabsible">
-            <input id="collapsible-page-{{ forloop.index }}" class="toggle" type="checkbox">
-            <label for="collapsible-page-{{ forloop.index }}" class="lbl-toggle">Search Text</label>
-            <div class="collapsible-content">
-              <div class="content-inner">
-                <p><strong>Note:</strong> This text isn't meant to be read. It's here to build index of the searchable words on each page.</p>
-                {{ content | remove: page.excerpt }}
-              </div>
-            </div>
-          </div>
       </section>
 
       {% include post_pagination_v2.html %}
