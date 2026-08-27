@@ -9,6 +9,7 @@
 @include breakpoint-set("to ems", true);
 @import "minimal-mistakes/vendor/magnific-popup/magnific-popup"; // Magnific Popup
 @import "minimal-mistakes/vendor/susy/susy";
+@import "minimal-mistakes/vendor/sortable-table/sortable-table";
 @import "minimal-mistakes/mixins";
 
 /* Core CSS */
@@ -21,6 +22,7 @@
 /* Components */
 @import "minimal-mistakes/buttons";
 @import "minimal-mistakes/notices";
+@import "minimal-mistakes/notice_text";
 @import "minimal-mistakes/masthead";
 @import "minimal-mistakes/navigation";
 @import "minimal-mistakes/footer";
@@ -30,6 +32,7 @@
 /* Utility classes */
 @import "minimal-mistakes/utilities";
 @import "minimal-mistakes/collapsible";
+@import "minimal-mistakes/image_map";
 
 /* Layout specific */
 @import "minimal-mistakes/page";

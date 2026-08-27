@@ -1,0 +1,138 @@
+$color_1: currentcolor;
+$background-color_1: #ddd;
+$background-color_2: #e5f4ff;
+
+/* Focus and hover styling */
+.sr-only {
+	position: absolute;
+	top: -30em;
+}
+table.sortable {
+	td {
+		padding: 0.125em 0.25em;
+		width: 8em;
+	}
+	th {
+		padding: 0.125em 0.25em;
+		width: 8em;
+		font-weight: bold;
+		border-bottom: thin solid #888;
+		position: relative;
+		&:nth-child(5) {
+			width: 10em;
+		}
+		button {
+			padding: 4px;
+			margin: 1px;
+			font-size: 100%;
+			font-weight: bold;
+			background: transparent;
+			border: none;
+			display: inline;
+			right: 0;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			text-align: left;
+			outline: none;
+			cursor: pointer;
+			color: inherit;
+			span {
+				position: absolute;
+				right: 4px;
+			}
+			&:focus {
+				padding: 2px;
+				border: 2px solid currentcolor;
+				background-color: $background-color_2;
+				span {
+					right: 2px;
+				}
+			}
+			&:hover {
+				padding: 2px;
+				border: 2px solid currentcolor;
+				background-color: $background-color_2;
+				span {
+					right: 2px;
+				}
+			}
+		}
+		&:not([aria-sort]) {
+			button {
+				&:focus {
+					span {
+						&::after {
+							content: "▼";
+							color: inherit;
+							font-size: 100%;
+							top: 0;
+						}
+					}
+				}
+				&:hover {
+					span {
+						&::after {
+							content: "▼";
+							color: inherit;
+							font-size: 100%;
+							top: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	th.no-sort {
+		padding-top: 0.35em;
+	}
+	th[aria-sort="descending"] {
+		span {
+			&::after {
+				content: "▼";
+				color: inherit;
+				font-size: 100%;
+				top: 0;
+			}
+		}
+	}
+	th[aria-sort="ascending"] {
+		span {
+			&::after {
+				content: "▲";
+				color: inherit;
+				font-size: 100%;
+				top: 0;
+			}
+		}
+	}
+	td.num {
+		text-align: right;
+	}
+	// tbody {
+	// 	tr {
+	// 		&:nth-child(odd) {
+	// 			background-color: $background-color_1;
+	// 		}
+	// 	}
+	// }
+}
+table.show-unsorted-icon {
+	th {
+		&:not([aria-sort]) {
+			button {
+				span {
+					&::after {
+						content: "♢";
+						color: inherit;
+						font-size: 100%;
+						position: relative;
+						top: -3px;
+						left: -4px;
+					}
+				}
+			}
+		}
+	}
+}

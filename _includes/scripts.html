@@ -19,6 +19,10 @@
   {%- endcase -%}
 {% endif %}
 
+{% if site.cookie_consent %}
+    {% include cookie-consent.html %}
+{% endif %}
+
 {% include analytics.html %}
 {% include /comments-providers/scripts.html locale=locale %}
 

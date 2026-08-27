@@ -1,0 +1,49 @@
+/* ==========================================================================
+   NOTICE TEXT BLOCKS
+   ========================================================================== */
+
+@mixin text($notice-color) {
+  color: $text-color;
+  background-color: mix($background-color, $notice-color, $notice-background-mix);
+}
+
+.notice--text
+{
+  @include text($light-gray);
+}
+
+/* Primary notice */
+
+.notice--text--primary
+{
+  @include text($primary-color);
+}
+
+/* Info notice */
+
+.notice--text--info
+{
+  @include text($info-color);
+}
+
+/* Warning notice */
+
+.notice--text--warning
+{
+  @include text($warning-color);
+}
+
+/* Success notice */
+
+.notice--text--success
+{
+  @include text($success-color);
+}
+
+/* Danger notice */
+
+.notice--text--danger
+{
+  @include text($danger-color);
+}
+

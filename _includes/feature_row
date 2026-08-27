@@ -36,15 +36,11 @@
           {% endif %}
 
           {% if f.url %}
-<<<<<<< HEAD
             {% if f.target %}
               <p><a href="{{ f.url | relative_url }}" target="{{ f.target }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
             {% else %}
               <p><a href="{{ f.url | relative_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[site.locale].more_label | default: "Learn More" }}</a></p>
             {% endif %}
-=======
-            <p><a href="{{ f.url | relative_url }}" class="btn {{ f.btn_class }}">{{ f.btn_label | default: site.data.ui-text[locale].more_label | default: "Learn More" }}</a></p>
->>>>>>> upstream
           {% endif %}
         </div>
       </div>
